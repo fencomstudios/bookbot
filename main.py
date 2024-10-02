@@ -1,10 +1,10 @@
 def main():
     split_book = process_book('books/frankenstein.txt')
     counted = character_count(split_book)
-    dict_to_list(counted)
+    book_report(dict_to_list(counted))
 
 def sort_by_num(dict):
-    return 
+    return dict['count']
 
 def process_book(path_to_book):
     with open(path_to_book, 'r') as file:
@@ -30,14 +30,13 @@ def character_count(book):
 def dict_to_list(d):
     converted = []
     for x in d:
-        converted.append({x: d[x]})
-    converted.sort(reverse=True)
-    print(converted)
+        converted.append({'letter': x, 'count': d[x]})
+    converted.sort(reverse=True, key=sort_by_num)
+    return converted
     
 
 def book_report(char_counts):
     for char in char_counts:
-        if char.isAlpha():
-            print(f"The '{char}' character was found {char_counts.get(char)} times.")
+        print(f"The '{char.get('letter')}' character was found {char.get('count')} times.")
     
 main()
