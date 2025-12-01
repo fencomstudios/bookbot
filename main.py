@@ -1,4 +1,4 @@
-from stats import word_count
+from stats import *
 
 def main():
     #split_book = process_book('books/frankenstein.txt')
@@ -6,6 +6,8 @@ def main():
     #book_report(dict_to_list(counted))
     book = get_book_text('books/frankenstein.txt')
     words, formatted = word_count(book)
+    characters = character_count(book)
+    print(characters)
     print(f"Found {words} total words")
     #print(formatted)
 
@@ -25,18 +27,6 @@ def process_book(path_to_book):
         return letters
         # print(letters)
         # print(len(word_split))
-
-def character_count(book):
-    counts = dict()
-    for letter in book:
-        if (not letter.isalpha()):
-            continue
-        elif (counts.get(letter) == None):
-            counts.update({letter: 1})
-        else:
-            counts.update({letter: counts[letter] + 1})
-    
-    return counts
 
 def dict_to_list(d):
     converted = []
