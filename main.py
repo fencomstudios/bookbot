@@ -1,10 +1,17 @@
 def main():
-    split_book = process_book('books/frankenstein.txt')
-    counted = character_count(split_book)
-    book_report(dict_to_list(counted))
+    #split_book = process_book('books/frankenstein.txt')
+    #counted = character_count(split_book)
+    #book_report(dict_to_list(counted))
+    book = get_book_text('books/frankenstein.txt')
+    print(book)
 
 def sort_by_num(dict):
     return dict['count']
+
+def get_book_text(path_to_book):
+    with open(path_to_book, 'r') as file:
+        current_book = file.read()
+        return current_book
 
 def process_book(path_to_book):
     with open(path_to_book, 'r') as file:
