@@ -1,9 +1,13 @@
+from stats import word_count
+
 def main():
     #split_book = process_book('books/frankenstein.txt')
     #counted = character_count(split_book)
     #book_report(dict_to_list(counted))
     book = get_book_text('books/frankenstein.txt')
-    print(book)
+    words, formatted = word_count(book)
+    print(f"Found {words} total words")
+    #print(formatted)
 
 def sort_by_num(dict):
     return dict['count']
