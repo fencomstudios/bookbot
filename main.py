@@ -7,8 +7,11 @@ def main():
     book = get_book_text('books/frankenstein.txt')
     words, formatted = word_count(book)
     characters = character_count(book)
-    print(characters)
     print(f"Found {words} total words")
+    report = report_dict(characters)
+    for r in report:
+        print(f"{r['char']}: {r['count']}")
+    #print(report)
     #print(formatted)
 
 def sort_by_num(dict):
@@ -34,10 +37,5 @@ def dict_to_list(d):
         converted.append({'letter': x, 'count': d[x]})
     converted.sort(reverse=True, key=sort_by_num)
     return converted
-    
-
-def book_report(char_counts):
-    for char in char_counts:
-        print(f"The '{char.get('letter')}' character was found {char.get('count')} times.")
     
 main()

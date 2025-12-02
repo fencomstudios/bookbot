@@ -14,3 +14,10 @@ def character_count(book):
             counts.update({letter: counts[letter] + 1})
     
     return counts
+
+def report_dict(char_counts):
+    character_list = []
+    for c in char_counts:
+        character_list.append({'char': c, 'count': char_counts[c]})
+    character_list.sort(reverse=True, key=lambda x: x['count'])
+    return character_list
