@@ -1,10 +1,14 @@
+import sys
 from stats import *
 
 def main():
     #split_book = process_book('books/frankenstein.txt')
     #counted = character_count(split_book)
     #book_report(dict_to_list(counted))
-    book = get_book_text('books/frankenstein.txt')
+    if len(sys.argv) <= 1:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book = get_book_text(sys.argv[1])
     words, formatted = word_count(book)
     characters = character_count(book)
     print(f"Found {words} total words")
